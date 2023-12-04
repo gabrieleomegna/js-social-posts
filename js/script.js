@@ -83,7 +83,7 @@ posts.forEach((post,index) => {
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <strong id="like-counter-${post.id}" data-postid="${post.id} class="js-likes-counter">${post.likes}</strong> persone
+                    Piace a <strong id="like-counter-${post.id}" data-postid="${post.id}" class="js-likes-counter">${post.likes}</strong> persone
                 </div>
             </div> 
         </div>            
@@ -91,17 +91,17 @@ posts.forEach((post,index) => {
     
 });
 
-const btnLinkes = wrapperElement.querySelectorAll('a.like-button.js-like-button');
+const btnLikes = wrapperElement.querySelectorAll('a.like-button.js-like-button');
 const likesCounter = wrapperElement.querySelectorAll('strong.js-likes-counter');
-for (let index = 0; index < btnLinkes.length; index++) {
-    btnLinkes[index].addEventListener('click', function(event) {
+for (let index = 0; index < btnLikes.length; index++) {
+    btnLikes[index].addEventListener('click', function(event) {
         event.preventDefault();
-        if (btnLinkes[index].classList.contains('like-button--liked')) {
-            btnLinkes[index].classList.remove('like-button--liked');
-            likesCounter[index].innerHTML = --parseInt(likesCounter[index].innerHTML, 10);
+        if (btnLikes[index].classList.contains('like-button--liked')) {
+            btnLikes[index].classList.remove('like-button--liked');
+            likesCounter[index].innerHTML = parseInt(likesCounter[index].innerHTML, 10) - 1;
         } else {
-            btnLinkes[index].classList.add('like-button--liked')
-            likesCounter[index].innerHTML = ++parseInt(likesCounter[index].innerHTML, 10);
+            btnLikes[index].classList.add('like-button--liked')
+            likesCounter[index].innerHTML = parseInt(likesCounter[index].innerHTML, 10) + 1;
         };
     })
 }
